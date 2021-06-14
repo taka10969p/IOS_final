@@ -17,7 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let settings = FirestoreSettings()
-
+       
         Firestore.firestore().settings = settings
     }
 }

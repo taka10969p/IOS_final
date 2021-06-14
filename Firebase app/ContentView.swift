@@ -53,6 +53,7 @@ struct ContentView_Previews: PreviewProvider {
 }
 #endif
 
+
 struct TopMenu: View {
     @Binding var isProfileShow: Bool
     
@@ -72,6 +73,12 @@ struct TopMenu: View {
                 
                 Button(action: { self.isProfileShow.toggle() }) {
                     Image(systemName: "person.circle")
+                        .resizable()
+                        .frame(width: 30, height: 30)
+                        .foregroundColor(.blue)
+                }
+                Button(action: { self.isProfileShow.toggle() }) {
+                    Image(systemName: "plus.bubble")
                         .resizable()
                         .frame(width: 30, height: 30)
                         .foregroundColor(.blue)
