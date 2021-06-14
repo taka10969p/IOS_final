@@ -23,6 +23,7 @@
 		98532C2426708A2A00A1D16D /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98532C2326708A2A00A1D16D /* Source.swift */; };
 		985BE1E1265E2063003D8CDE /* LabelledDivider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 985BE1E0265E2063003D8CDE /* LabelledDivider.swift */; };
 		98885B4B265EA8C900D9BEF9 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98885B4A265EA8C900D9BEF9 /* ViewModel.swift */; };
+		98BDDFD3267750BE0051C762 /* AddNewNote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98BDDFD2267750BE0051C762 /* AddNewNote.swift */; };
 		98C936FC265E78F100D75968 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C936FB265E78F100D75968 /* ViewController.swift */; };
 		98C936FE265E849500D75968 /* OldCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98C936FD265E849500D75968 /* OldCard.swift */; };
 		A2880B146ACF2BF2FF7D5DE1 /* Pods_Firebase_appTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35573B235AEDF682E7061BE7 /* Pods_Firebase_appTests.framework */; };
@@ -74,6 +75,7 @@
 		98532C2326708A2A00A1D16D /* Source.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		985BE1E0265E2063003D8CDE /* LabelledDivider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelledDivider.swift; sourceTree = "<group>"; };
 		98885B4A265EA8C900D9BEF9 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		98BDDFD2267750BE0051C762 /* AddNewNote.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewNote.swift; sourceTree = "<group>"; };
 		98C936FB265E78F100D75968 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		98C936FD265E849500D75968 /* OldCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OldCard.swift; sourceTree = "<group>"; };
 		DFB2FA978CED60EEE4173151 /* Pods_Firebase_app_Firebase_appUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Firebase_app_Firebase_appUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +149,7 @@
 				98C936FB265E78F100D75968 /* ViewController.swift */,
 				98C936FD265E849500D75968 /* OldCard.swift */,
 				98885B4A265EA8C900D9BEF9 /* ViewModel.swift */,
+				98BDDFD2267750BE0051C762 /* AddNewNote.swift */,
 			);
 			path = "Firebase app";
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 			files = (
 				98C936FC265E78F100D75968 /* ViewController.swift in Sources */,
 				98532C2226708A0100A1D16D /* ProfileView.swift in Sources */,
+				98BDDFD3267750BE0051C762 /* AddNewNote.swift in Sources */,
 				98C936FE265E849500D75968 /* OldCard.swift in Sources */,
 				985BE1E1265E2063003D8CDE /* LabelledDivider.swift in Sources */,
 				980FDF8B265E116900745BC9 /* AppDelegate.swift in Sources */,

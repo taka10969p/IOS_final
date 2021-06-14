@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ProfileView: View {
-    @Binding var isProfileShow: Bool
+//    @Binding var isProfileShow: Bool
     
     var body: some View {
         VStack {
@@ -19,9 +19,6 @@ struct ProfileView: View {
                 
                 HStack {
                     Spacer()
-                    Button(action: { self.isProfileShow.toggle() }) {
-                        Text("Cancel")
-                    }
                 }
             }
             
@@ -39,7 +36,7 @@ struct ProfileView: View {
 #if DEBUG
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView(isProfileShow: .constant(true))
+        ProfileView()
     }
 }
 #endif

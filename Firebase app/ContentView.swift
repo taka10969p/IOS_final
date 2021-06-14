@@ -10,33 +10,42 @@ import FirebaseCore
 import FirebaseFirestore
 
 struct ContentView: View {
-    @State var isProfileShow = false
+    @State var isUploadShow = false
     @State var counter: CGFloat = 0;
     @ObservedObject private var viemModel = ViewModel()
     @ObservedObject var control = CardView_Control()
         
     var body: some View {
-        ScrollView {
-            TopMenu(isProfileShow: $isProfileShow)
-                .padding()
-                .padding(.bottom, -10)
-            
-            ForEach(self.viemModel.cardData) { card in
-                CardView (
-                    subtitle: card.subtitle,
-                    title: card.title,
-                    backgroundImage: Image(card.backgroundImage),
-                    briefSummary: card.briefSummary,
-                    description: card.description
-                )
-                .environmentObject(self.control)
+        TabView{
+            ScrollView {
+                TopMenu(isUploadShow: $isUploadShow)
+                    .padding()
+                    .padding(.bottom, -10)
+                
+                ForEach(self.viemModel.cardData) { card in
+                    CardView (
+                        subtitle: card.subtitle,
+                        title: card.title,
+                        backgroundImage: Image(card.backgroundImage),
+                        briefSummary: card.briefSummary,
+                        description: card.description
+                    )
+                    .environmentObject(self.control)
+                }
             }
+            .onAppear { self.viemModel.readData() }
+            .background(Color("bgColor1"))
+            .sheet(isPresented: $isUploadShow, content: {
+                AddNewNote(isUploadShow: $isUploadShow)
+            }).tabItem {
+                Image(systemName: "note")
+                Text("Note")
+          }
+            ProfileView().tabItem {
+                Image(systemName: "person.circle")
+                Text("Profile")
+          }
         }
-        .onAppear { self.viemModel.readData() }
-        .background(Color("bgColor1"))
-        .sheet(isPresented: $isProfileShow, content: {
-            ProfileView(isProfileShow: self.$isProfileShow)
-        })
         //.edgesIgnoringSafeArea(.all)
     }
 }
@@ -53,9 +62,8 @@ struct ContentView_Previews: PreviewProvider {
 }
 #endif
 
-
 struct TopMenu: View {
-    @Binding var isProfileShow: Bool
+    @Binding var isUploadShow: Bool
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -71,22 +79,24 @@ struct TopMenu: View {
                 
                 Spacer()
                 
-                Button(action: { self.isProfileShow.toggle() }) {
-                    Image(systemName: "person.circle")
-                        .resizable()
-                        .frame(width: 30, height: 30)
-                        .foregroundColor(.blue)
-                }
-                Button(action: { self.isProfileShow.toggle() }) {
+
+                Button(action: { self.isUploadShow.toggle() }) {
                     Image(systemName: "plus.bubble")
                         .resizable()
-                        .frame(width: 30, height: 30)
+                        .frame(width: 20, height: 20)
                         .foregroundColor(.blue)
                 }
             }
         }
     }
 }
+
+//                Button(action: { self.isProfileShow.toggle() }) {
+//                    Image(systemName: "person.circle")
+//                        .resizable()
+//                        .frame(width: 30, height: 30)
+//                        .foregroundColor(.blue)
+//                }
 
 
 //struct ContentView: View {
