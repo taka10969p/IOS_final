@@ -13,49 +13,8 @@ struct AddNewNote: View {
     @State private var subtitle_add = ""
     @State private var briefSummary_add = ""
     @State private var description = ""
-    @State private var pic=Image(systemName: "square.and.arrow.up")
-    
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-        if let image = info[.originalImage] as? Image {
-            pic = image
-        }
-        
-        picker.dismiss(animated: true)
-        
-    }
-    let imagePickerController = UIImagePickerController()
-    func tapPhotoPickImageView(){
-        let controller = UIAlertController(title: "拍照?從照片選取?從相簿選取?", message: "", preferredStyle: .alert)
-        controller.view.tintColor = UIColor.gray
-        
-        // 相機
-        let cameraAction = UIAlertAction(title: "相簿", style: .default) { _ in
-            self.takePicture()
-        }
-        controller.addAction(cameraAction)
-        
-        // 圖庫
-        let photoLibraryAction = UIAlertAction(title: "照片", style: .default) { _ in
-            self.openPhotoLibrary()
-        }
-        controller.addAction(photoLibraryAction)
-        
-        let cancelAction = UIAlertAction(title: "取消", style: .destructive, handler: nil)
-        controller.addAction(cancelAction)
-    }
-    
-    /// 開啟相機
-    func takePicture() {
-        imagePickerController.sourceType = .savedPhotosAlbum
-        
-    }
-    
-    /// 開啟圖庫
-    func openPhotoLibrary() {
-        imagePickerController.sourceType = .photoLibrary
-        
-    }
-    
+    @State private var isShowPhotoLibrary = false
+    @State private var image = UIImage()
     
     var body:some View{
         VStack{
@@ -76,11 +35,29 @@ struct AddNewNote: View {
                 TextField("請輸入內容：",text:$subtitle_add)
                 
             }
-            HStack{
-                Button(action: {tapPhotoPickImageView()}, label: {
-                    Text("加入照片")
-                })
-            }
+            HStack{ 
+               Button(action: {
+                   self.isShowPhotoLibrary = true
+               }) {
+                   HStack {
+                       Image(systemName: "photo")
+                           .font(.system(size: 20))
+                   }
+                   .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 30)
+                   .background(Color.blue)
+                   .foregroundColor(.white)
+                   .cornerRadius(20)
+                   .padding(.horizontal)
+               }
+                Image(uiImage: self.image)
+                .resizable()
+                .scaledToFill()
+                .frame(width: 100, height: 100, alignment: .center)
+                .edgesIgnoringSafeArea(.all)
+           }
+           .sheet(isPresented: $isShowPhotoLibrary) {
+                ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
+           }
         }
     }
 }

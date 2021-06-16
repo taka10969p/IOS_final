@@ -22,11 +22,11 @@ struct ProfileView: View {
                 }
             }
             
-            Text("This is a user account profile view!")
+            Text("This feature is not open yet")
                 .font(.body)
                 .frame(minWidth: 0, maxWidth: .infinity,
                        minHeight: 0, maxHeight: .infinity)
-                .foregroundColor(.red)
+                .foregroundColor(.black)
             
         }
         .padding()
