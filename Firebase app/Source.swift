@@ -18,6 +18,7 @@ struct Card : Identifiable, Codable, Hashable {
     var backgroundImage =  "bg1"
     var briefSummary = "How VSCO brings analog authenticity to your digital shots"
     var description = desPlaceholer
+    var date = Date()
 }
 
 let desPlaceholer = "NMSL"

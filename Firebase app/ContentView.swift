@@ -21,12 +21,11 @@ struct ContentView: View {
                 TopMenu(isUploadShow: $isUploadShow)
                     .padding()
                     .padding(.bottom, -10)
-                
                 ForEach(self.viemModel.cardData) { card in
                     CardView (
                         subtitle: card.subtitle,
                         title: card.title,
-                        backgroundImage: Image(card.backgroundImage),
+                        backgroundImage: card.backgroundImage,
                         briefSummary: card.briefSummary,
                         description: card.description
                     )
