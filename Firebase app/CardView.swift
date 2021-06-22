@@ -24,14 +24,14 @@ struct CardView: View {
     @EnvironmentObject var control: CardView_Control
         
     var body: some View {
-        let url = URL(string: backgroundImage)!
+//        let url = URL(string: backgroundImage)!
 
         // Fetch Image Data
-        let data = try? Data(contentsOf: url)
+//        let data = try? Data(contentsOf: url)
 
-        let image = Image(uiImage: UIImage(data: data!)!)
+//        let image = Image(uiImage: UIImage(data: data!)!)
         GeometryReader { geo in
-            CardInnerView(subtitle: self.subtitle, title: self.title, backgroundImage: image, briefSummary: self.briefSummary, description: self.description, isShow: self.$isShowDetail)
+            CardInnerView(subtitle: self.subtitle, title: self.title, backgroundImage: backgroundImage, briefSummary: self.briefSummary, description: self.description, isShow: self.$isShowDetail)
                 .onTapGesture {
                     withAnimation(.interpolatingSpring(mass: 1, stiffness: 90, damping: 15, initialVelocity: 1)) {
                         self.isShowDetail.toggle()
@@ -48,6 +48,26 @@ struct CardView: View {
         .offset(x: control.anyTriggered && !isShowDetail ? UIScreen.main.bounds.width : 0)
         .opacity(control.anyTriggered && !isShowDetail ? 0 : 1)
     }
+}
+
+extension Image {
+
+func data(url:URL) -> Self {
+
+if let data = try? Data(contentsOf: url) {
+
+return Image(uiImage: UIImage(data: data)!)
+
+.resizable()
+
+}
+
+return self
+
+.resizable()
+
+}
+
 }
 
 
@@ -70,7 +90,7 @@ struct CardView_Previews: PreviewProvider {
 struct CardInnerView: View {
     var subtitle: String
     var title: String
-    var backgroundImage: Image
+    var backgroundImage: String
     var briefSummary: String
     var description: String
     
@@ -83,11 +103,7 @@ struct CardInnerView: View {
                 TopView(subtitle: self.subtitle, title: self.title, backgroundImage: self.backgroundImage, briefSummary: self.briefSummary, isShow: self.$isShow)
                     .frame(height: 300)
                     .background(
-                        self.backgroundImage
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(maxWidth: geo.size.width, maxHeight: geo.size.height)
-                            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+                        Image("").data(url: URL(string: backgroundImage)!)
                     )
                     .offset(y: self.translation.height)
                 
@@ -106,7 +122,7 @@ struct CardInnerView: View {
 struct TopView: View {
     var subtitle: String
     var title: String
-    var backgroundImage: Image
+    var backgroundImage: String
     var briefSummary: String
     
     @Binding var isShow: Bool

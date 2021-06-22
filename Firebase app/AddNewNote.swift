@@ -23,7 +23,6 @@ struct AddNewNote: View {
                 FloatingTextField($title_add,placeholder: "標題").icon(systemName: "bubble.left").accentColor(Color.purple).autocapitalization(.none).padding()
             }
             HStack{
-                
                 FloatingTextField($subtitle_add,placeholder: "子標題").icon(systemName: "paperclip").accentColor(Color.orange).autocapitalization(.none).padding()
             }
             HStack{
@@ -49,7 +48,6 @@ struct AddNewNote: View {
             .sheet(isPresented: $isShowPhotoLibrary) {
                 ImagePicker(sourceType: .photoLibrary, selectedImage: self.$image)
             }
-
             Spacer()
             HStack{
                 Image(uiImage: self.image)
